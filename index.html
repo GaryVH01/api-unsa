@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNSA FCS - Pour une justice sociale</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #0066cc;
+        --primary-dark: #004b99;
+        --text: #1a1a1a;
+        --text-light: #666;
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --border: #e0e0e0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .nav-links a.btn-primary {
+        color: white !important;
+      }
+
+      .nav-links a.btn-primary:hover {
+        color: white !important;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        padding: 0.75rem 1.75rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 102, 204, 0.2);
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 80px;
+        min-height: 95vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+        animation: kenburns 20s ease-in-out infinite alternate;
+      }
+
+      @keyframes kenburns {
+        0% {
+          transform: scale(1) translateX(0);
+        }
+        100% {
+          transform: scale(1.1) translateX(-20px);
+        }
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 204, 0.7) 0%,
+          rgba(0, 75, 153, 0.8) 100%
+        );
+        mix-blend-mode: multiply;
+      }
+
+      .hero-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-image: url("logo.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.08;
+        animation: floatElegant 20s infinite ease-in-out;
+        filter: blur(1px);
+      }
+
+      .particle:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        left: 8%;
+        top: 15%;
+        animation-delay: 0s;
+        animation-duration: 22s;
+        opacity: 0.06;
+        filter: blur(1.5px);
+      }
+
+      .particle:nth-child(2) {
+        width: 100px;
+        height: 100px;
+        right: 8%;
+        top: 25%;
+        animation-delay: 2.5s;
+        animation-duration: 26s;
+        opacity: 0.05;
+        filter: blur(2px);
+      }
+
+      .particle:nth-child(3) {
+        width: 70px;
+        height: 70px;
+        left: 12%;
+        bottom: 20%;
+        animation-delay: 5s;
+        animation-duration: 19s;
+        opacity: 0.07;
+        filter: blur(1.2px);
+      }
+
+      .particle:nth-child(4) {
+        width: 90px;
+        height: 90px;
+        right: 15%;
+        bottom: 15%;
+        animation-delay: 1.5s;
+        animation-duration: 24s;
+        opacity: 0.055;
+        filter: blur(1.8px);
+      }
+
+      .particle:nth-child(5) {
+        width: 65px;
+        height: 65px;
+        left: 45%;
+        top: 35%;
+        animation-delay: 4s;
+        animation-duration: 21s;
+        opacity: 0.065;
+        filter: blur(1.3px);
+      }
+
+      .particle:nth-child(6) {
+        width: 55px;
+        height: 55px;
+        left: 60%;
+        top: 60%;
+        animation-delay: 3s;
+        animation-duration: 18s;
+        opacity: 0.08;
+        filter: blur(1px);
+      }
+
+      @keyframes floatElegant {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+          opacity: 0.05;
+        }
+        25% {
+          transform: translateY(-30px) translateX(20px) rotate(5deg) scale(1.05);
+          opacity: 0.08;
+        }
+        50% {
+          transform: translateY(-50px) translateX(-15px) rotate(-5deg)
+            scale(0.95);
+          opacity: 0.06;
+        }
+        75% {
+          transform: translateY(-25px) translateX(25px) rotate(3deg) scale(1.02);
+          opacity: 0.07;
+        }
+        100% {
+          transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+          opacity: 0.05;
+        }
+      }
+
+      .hero-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        position: relative;
+        z-index: 10;
+        color: white;
+      }
+
+      .hero-text {
+        max-width: 800px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .hero-text h1 {
+        font-size: 4.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-text h1 .highlight {
+        background: linear-gradient(120deg, #ffffff 0%, #a8d8ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero-cta-focus {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 650px;
+        animation: fadeInUp 0.8s ease-out 0.8s backwards;
+      }
+
+      .hero-cta-focus p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.95;
+      }
+
+      .hero-cta-focus .btn-white {
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 1.3rem 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.95;
+        max-width: 650px;
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+      }
+
+      .btn-white {
+        background: white;
+        color: var(--primary);
+        padding: 1.1rem 2.8rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        transition: all 0.3s;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-white::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .btn-white:hover::before {
+        left: 100%;
+      }
+
+      .btn-white:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 1.1rem 2.8rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s;
+        font-size: 1.1rem;
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-3px);
+      }
+
+      .hero-stats {
+        display: none;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        animation: bounce 2s infinite;
+        cursor: pointer;
+      }
+
+      .scroll-indicator a {
+        display: block;
+        text-decoration: none;
+      }
+
+      .scroll-indicator span {
+        display: block;
+        width: 30px;
+        height: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 25px;
+        position: relative;
+      }
+
+      .scroll-indicator span::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        animation: scroll 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      @keyframes scroll {
+        0% {
+          opacity: 0;
+          top: 8px;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          top: 30px;
+        }
+      }
+
+      /* News Section - Masonry Gallery */
+      .section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        overflow: hidden;
+        clear: both;
+      }
+
+      /* About Section Styles */
+      .about-hero {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 4rem;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        background-image: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80");
+      }
+
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 204, 0.85) 0%,
+          rgba(0, 75, 153, 0.9) 100%
+        );
+      }
+
+      .about-hero-content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding: 4rem;
+        max-width: 800px;
+      }
+
+      .about-hero-content h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+      }
+
+      .about-hero-content p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        opacity: 0.95;
+      }
+
+      .about-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .about-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        border: 1px solid var(--border);
+      }
+
+      .about-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .about-card-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+      }
+
+      .about-card-content {
+        padding: 2rem;
+      }
+
+      .about-card-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .about-card-content p {
+        color: var(--text-light);
+        line-height: 1.7;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+      }
+
+      .value-item {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+      }
+
+      .value-item h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+
+      .value-item p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      /* Contact Section Styles */
+      .contact-section {
+        background: var(--bg-light);
+        padding: 6rem 2rem;
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .contact-info h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+      }
+
+      .contact-info p {
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .contact-details {
+        list-style: none;
+        padding: 0;
+      }
+
+      .contact-details li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+      }
+
+      .contact-details li strong {
+        color: var(--primary);
+        margin-right: 0.5rem;
+        min-width: 100px;
+      }
+
+      .contact-form {
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s;
+        background: white;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .form-submit {
+        width: 100%;
+        padding: 1.2rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .form-submit:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .section-title p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      .view-all {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s;
+      }
+
+      .view-all:hover {
+        gap: 1rem;
+      }
+
+      /* Masonry Gallery - CSS Grid Native */
+      .masonry-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        grid-auto-flow: dense;
+        grid-auto-rows: 50px;
+      }
+
+      .news-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        grid-column: span 1;
+        grid-row: span 6;
+      }
+
+      .news-card.wide {
+        grid-column: span 2;
+        grid-row: span 5;
+      }
+
+      .news-card.full {
+        grid-column: span 3;
+        grid-row: span 4;
+      }
+
+      .news-card.tall {
+        grid-row: span 8;
+      }
+
+      .news-card.short {
+        grid-row: span 5;
+      }
+
+      .news-card.align-bottom {
+        grid-row: span 9;
+      }
+
+      .news-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Classes pour différentes tailles de cartes */
+      .news-card.tall .news-image {
+        min-height: 400px;
+      }
+
+      .news-card.medium .news-image {
+        min-height: 250px;
+      }
+
+      .news-card.small .news-image {
+        min-height: 200px;
+      }
+
+      .news-image {
+        width: 100%;
+        flex: 1 1 auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        font-weight: 800;
+        min-height: 150px;
+      }
+
+      /* Cartes avec image uniquement (sans texte) */
+      .news-card.image-only {
+        position: relative;
+      }
+
+      .news-card.image-only .news-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+      }
+
+      .news-card.image-only .news-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          transparent 100%
+        );
+        padding: 1.5rem;
+        color: white;
+        z-index: 2;
+      }
+
+      .news-card.image-only .news-category {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .news-card.image-only .news-title {
+        color: white;
+        font-size: 1.1rem;
+      }
+
+      .news-card.image-only .news-excerpt {
+        display: none;
+      }
+
+      .news-card:nth-child(1) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80");
+      }
+
+      .news-card:nth-child(2) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80");
+      }
+
+      .news-card:nth-child(3) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80");
+      }
+
+      .news-card:nth-child(4) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80");
+      }
+
+      .news-card:nth-child(5) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&q=80");
+      }
+
+      .news-card:nth-child(6) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80");
+      }
+
+      .news-card:nth-child(7) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80");
+      }
+
+      .news-card:nth-child(8) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&q=80");
+      }
+
+      .news-card:nth-child(9) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80");
+      }
+
+      .news-card:nth-child(10) .news-image {
+        background-image: url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80");
+      }
+
+      .news-date {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .news-content {
+        padding: 1.5rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+      }
+
+      .news-category {
+        display: inline-block;
+        background: var(--bg-light);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .news-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--text);
+        line-height: 1.4;
+      }
+
+      .news-excerpt {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        text-align: center;
+        padding: 5rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        top: -150px;
+        left: -150px;
+      }
+
+      .cta-section::after {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        bottom: -100px;
+        right: -100px;
+      }
+
+      .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+      }
+
+      /* Footer */
+      footer {
+        background: white;
+        color: var(--text);
+        padding: 3rem 2rem 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        color: var(--primary);
+      }
+
+      .footer-section a {
+        color: var(--text-light);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.75rem;
+        transition: color 0.3s;
+      }
+
+      .footer-section a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--text-light);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .masonry-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-text p {
+          font-size: 1.1rem;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .hero-actions a {
+          width: 100%;
+          text-align: center;
+        }
+
+        .hero-stats {
+          display: none;
+        }
+
+        .scroll-indicator {
+          display: none;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .masonry-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .news-card,
+        .news-card.wide,
+        .news-card.full,
+        .news-card.short,
+        .news-card.tall,
+        .news-card.align-bottom {
+          grid-column: span 1;
+          grid-row: span 6;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo">UNSA API Restauration</a>
+        <div class="nav-links">
+          <a href="#actualites">Actualités</a>
+          <a href="#nous">Qui sommes-nous</a>
+          <a href="#contact">Contact</a>
+          <a
+            target="_blank"
+            href="https://commerces-services.unsa.org/adhesion"
+            class="btn-primary"
+            >Adhérer</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <img src="./cantine.jpg" alt="Équipe" class="hero-image" />
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- <span class="hero-badge">🍽️ UNSA API Restauration</span> -->
+          <h1>
+            Défendons ensemble vos <span class="highlight">droits</span> dans la
+            restauration
+          </h1>
+          <p>
+            Le syndicat qui vous accompagne au quotidien pour améliorer vos
+            conditions de travail, défendre vos intérêts et faire valoir vos
+            droits.
+          </p>
+          <div class="hero-actions">
+            <a
+              target="_blank"
+              href="https://commerces-services.unsa.org/adhesion"
+              class="btn-white"
+              >Adhérer maintenant</a
+            >
+            <a href="#actualites" class="btn-outline">Nos actualités</a>
+          </div>
+          <!-- <div class="hero-cta-focus">
+            <p>
+              <strong>🎯 Pourquoi adhérer ?</strong> Bénéficiez d'un
+              accompagnement juridique, d'une protection sociale renforcée et
+              rejoignez une communauté solidaire.
+            </p>
+            <a href="#adhesion" class="btn-white">💪 Je rejoins l'UNSA</a>
+          </div> -->
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <a href="#actualites" aria-label="Aller à la section actualités">
+          <span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="actualites">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Actualités</h2>
+          <p>Restez informés de nos actions et combats</p>
+        </div>
+        <a href="#" class="view-all">Toutes les actualités →</a>
+      </div>
+
+      <div class="masonry-gallery">
+        <article class="news-card image-only wide tall">
+          <div class="news-image">
+            <span class="news-date">4 Déc</span>
+            <div class="news-content">
+              <span class="news-category">Restauration durable</span>
+              <h3 class="news-title">
+                Transition écologique : nos engagements pour 2025
+              </h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <span class="news-date">2 Déc</span>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Formation</span>
+            <h3 class="news-title">
+              Formation professionnelle en restauration
+            </h3>
+            <p class="news-excerpt">
+              Nouveaux parcours de qualification et d'évolution de carrière pour
+              les salariés du secteur.
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <span class="news-date">28 Nov</span>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Emploi</span>
+            <h3 class="news-title">
+              Protection des salariés en période difficile
+            </h3>
+            <p class="news-excerpt">
+              Nos actions pour défendre l'emploi et accompagner les salariés
+              face aux restructurations.
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card image-only">
+          <div class="news-image">
+            <span class="news-date">27 Nov</span>
+            <div class="news-content">
+              <span class="news-category">Sécurité au travail</span>
+              <h3 class="news-title">Prévention des risques en cuisine</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card short">
+          <div class="news-image">
+            <span class="news-date">24 Nov</span>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Santé au travail</span>
+            <h3 class="news-title">
+              Conditions de travail : notre combat continue
+            </h3>
+            <p class="news-excerpt">
+              Amélioration des conditions de travail et de la santé des salariés
+              de la restauration.
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card wide short">
+          <div class="news-image">
+            <span class="news-date">21 Nov</span>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Droits des salariés</span>
+            <h3 class="news-title">Justice sociale : nos victoires récentes</h3>
+            <p class="news-excerpt">
+              Retour sur les décisions de justice qui renforcent les droits des
+              travailleurs de la restauration.
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card image-only align-bottom">
+          <div class="news-image">
+            <span class="news-date">19 Nov</span>
+            <div class="news-content">
+              <span class="news-category">Représentation</span>
+              <h3 class="news-title">
+                CSE : renforcer votre voix dans l'entreprise
+              </h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card image-only short">
+          <div class="news-image">
+            <span class="news-date">17 Nov</span>
+            <div class="news-content">
+              <span class="news-category">Rémunération</span>
+              <h3 class="news-title">
+                Travail de nuit : vos droits et compensations
+              </h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card short">
+          <div class="news-image">
+            <span class="news-date">14 Nov</span>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Solidarité</span>
+            <h3 class="news-title">Ensemble pour défendre vos droits</h3>
+            <p class="news-excerpt">
+              L'importance de l'action collective et de la solidarité dans la
+              défense des intérêts des salariés.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="nous">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Qui sommes-nous</h2>
+          <p>Le syndicat qui défend vos droits dans la restauration</p>
+        </div>
+      </div>
+
+      <div class="about-hero">
+        <div class="about-hero-content">
+          <h2>Notre mission</h2>
+          <p>
+            L'UNSA API Restauration est un syndicat engagé pour défendre les
+            droits et améliorer les conditions de travail des salariés du
+            secteur de la restauration. Nous accompagnons chaque jour des
+            milliers de travailleurs dans leurs démarches et leurs combats pour
+            construire ensemble un secteur plus juste.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-cards">
+        <article class="about-card">
+          <div
+            class="about-card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80');
+            "
+          ></div>
+          <div class="about-card-content">
+            <h3>Conseil juridique</h3>
+            <p>
+              Accompagnement personnalisé dans vos démarches et défense de vos
+              droits. Nos experts juridiques vous conseillent et vous
+              représentent.
+            </p>
+          </div>
+        </article>
+
+        <article class="about-card">
+          <div
+            class="about-card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');
+            "
+          ></div>
+          <div class="about-card-content">
+            <h3>Représentation</h3>
+            <p>
+              Votre voix dans les négociations et les instances représentatives.
+              Nous portons vos revendications et défendons vos intérêts.
+            </p>
+          </div>
+        </article>
+
+        <article class="about-card">
+          <div
+            class="about-card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80');
+            "
+          ></div>
+          <div class="about-card-content">
+            <h3>Formation</h3>
+            <p>
+              Outils et ressources pour mieux connaître vos droits. Formations
+              et guides pratiques pour vous accompagner au quotidien.
+            </p>
+          </div>
+        </article>
+
+        <article class="about-card">
+          <div
+            class="about-card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80');
+            "
+          ></div>
+          <div class="about-card-content">
+            <h3>Action collective</h3>
+            <p>
+              Mobilisation pour améliorer les conditions de travail. Ensemble,
+              nous agissons pour transformer le secteur de la restauration.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- <div class="section-header" style="margin-bottom: 3rem">
+        <div class="section-title">
+          <h2>Nos valeurs</h2>
+          <p>Les principes qui guident notre action</p>
+        </div>
+      </div> -->
+      <!-- 
+      <div class="values-grid">
+        <div class="value-item">
+          <h4>Solidarité</h4>
+          <p>
+            Nous défendons collectivement vos intérêts et créons un réseau
+            d'entraide entre tous les salariés.
+          </p>
+        </div>
+        <div class="value-item">
+          <h4>Justice sociale</h4>
+          <p>
+            Nous luttons pour l'équité et le respect des droits de chaque
+            travailleur dans la restauration.
+          </p>
+        </div>
+        <div class="value-item">
+          <h4>Accompagnement</h4>
+          <p>
+            Nous vous soutenons dans toutes vos démarches, de l'information à la
+            représentation juridique.
+          </p>
+        </div>
+        <div class="value-item">
+          <h4>Transparence</h4>
+          <p>
+            Nous agissons avec clarté et honnêteté, en rendant compte de nos
+            actions et de nos résultats.
+          </p>
+        </div>
+      </div> -->
+    </section>
+
+    <section class="cta-section" id="adhesion">
+      <div class="cta-content">
+        <h2>Prêt à nous rejoindre ?</h2>
+        <p>
+          Ensemble, construisons un monde professionnel plus juste. Votre voix
+          compte, votre engagement fait la différence.
+        </p>
+        <a
+          target="_blank"
+          href="https://commerces-services.unsa.org/adhesion"
+          class="btn-white"
+          >Adhérer</a
+        >
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contactez-nous</h3>
+          <p>
+            Vous avez une question ? Besoin d'informations ? Notre équipe est à
+            votre écoute pour vous accompagner et répondre à toutes vos
+            interrogations.
+          </p>
+          <ul class="contact-details">
+            <li>
+              <strong>Adresse :</strong>
+              <span>21 rue Jules Ferry, 75011 Paris</span>
+            </li>
+            <li>
+              <strong>Email :</strong>
+              <a
+                href="mailto:contact@unsa-fcs.org"
+                style="color: var(--primary); text-decoration: none"
+                >contact@unsa-fcs.org</a
+              >
+            </li>
+            <li>
+              <strong>Téléphone :</strong>
+              <a
+                href="tel:+33000000000"
+                style="color: var(--primary); text-decoration: none"
+                >01 00 00 00 00</a
+              >
+            </li>
+            <li>
+              <strong>Horaires :</strong>
+              <span>Lundi - Vendredi : 9h - 18h</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Nom et Prénom *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Votre nom complet"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="votre.email@exemple.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="01 23 45 67 89"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Sujet *</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="Objet de votre message"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Votre message..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Envoyer le message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>UNSA API Restauration</h3>
+          <p style="color: var(--text-light); line-height: 1.8">
+            Le syndicat qui défend<br />vos droits dans la restauration
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <a href="#actualites">Actualités</a>
+          <a href="#nous">Qui sommes-nous</a>
+          <!-- <a href="#branches">Nos branches</a> -->
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h3>Ressources</h3>
+          <a href="#">Vos droits</a>
+          <a href="#">Outils élus</a>
+          <a href="#">Veille juridique</a>
+          <a href="#">Documentation</a>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <a href="#">21 rue Jules Ferry</a>
+          <a href="mailto:contact@unsa-fcs.org">contact@unsa-fcs.org</a>
+          <a href="tel:+33000000000">01 00 00 00 00</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 UNSA API Restauration. Tous droits réservés.</p>
+      </div>
+    </footer>
+  </body>
+</html>
