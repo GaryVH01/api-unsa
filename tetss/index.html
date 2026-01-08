@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plans Tarifaires</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 60px 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 48px;
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+
+      .header p {
+        font-size: 20px;
+        opacity: 0.9;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .plan-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 32px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .plan-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+      }
+
+      .plan-card.featured {
+        border: 3px solid #667eea;
+        transform: scale(1.05);
+      }
+
+      .plan-card.featured::before {
+        content: "Le plus populaire";
+        position: absolute;
+        top: 20px;
+        right: -35px;
+        background: #667eea;
+        color: white;
+        padding: 8px 45px;
+        font-size: 12px;
+        font-weight: 600;
+        transform: rotate(45deg);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .plan-header {
+        text-align: center;
+        margin-bottom: 32px;
+        padding-bottom: 32px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .plan-name {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #667eea;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .plan-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .plan-subtitle {
+        color: #666;
+        font-size: 15px;
+      }
+
+      .plan-price {
+        margin: 24px 0;
+      }
+
+      .price {
+        font-size: 56px;
+        font-weight: 800;
+        color: #1a1a1a;
+        line-height: 1;
+      }
+
+      .price-period {
+        font-size: 16px;
+        color: #666;
+        font-weight: 400;
+        display: block;
+        margin-top: 8px;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin-bottom: 32px;
+      }
+
+      .feature-category {
+        margin-top: 24px;
+        padding-top: 16px;
+      }
+
+      .feature-category:first-child {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .category-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #667eea;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+
+      .feature-item {
+        padding: 10px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        color: #444;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .checkmark {
+        color: #10b981;
+        font-weight: 700;
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .cta-button {
+        width: 100%;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .cta-button.primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .cta-button.primary:hover {
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        transform: translateY(-2px);
+      }
+
+      .cta-button.secondary {
+        background: white;
+        color: #667eea;
+        border: 2px solid #667eea;
+      }
+
+      .cta-button.secondary:hover {
+        background: #667eea;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 36px;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .plan-card.featured {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Choisissez votre plan</h1>
+        <p>Des solutions adaptées à chaque étape de votre croissance</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan Essentiel -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">Essentiel</div>
+            <h2 class="plan-title">Essentiel</h2>
+            <p class="plan-subtitle">Parfait pour commencer</p>
+            <div class="plan-price">
+              <span class="price">€12.99</span>
+              <span class="price-period">par mois</span>
+            </div>
+          </div>
+
+          <ul class="plan-features">
+            <div class="feature-category">
+              <div class="category-title">Clients & Facturation</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Jusqu'à 100 clients</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>50 factures/devis par mois</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>TVA personnalisée</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Envoi par email</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Gestion & Rapports</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Dashboard basique</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Gestion achats et fournisseurs</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Gestion des services/prestations</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Rapports avancés avec graphiques</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Livre de recettes simple</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Personnalisation & Support</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Personnalisation couleurs et logo</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Tarifs personnalisés par client</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Chatbot/Assistant IA intégré</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Support par email (48h)</span>
+              </li>
+            </div>
+          </ul>
+
+          <button class="cta-button secondary">Commencer</button>
+        </div>
+
+        <!-- Plan Professionnel -->
+        <div class="plan-card featured">
+          <div class="plan-header">
+            <div class="plan-name">Pro</div>
+            <h2 class="plan-title">Professionnel</h2>
+            <p class="plan-subtitle">Le plus populaire</p>
+            <div class="plan-price">
+              <span class="price">€24.99</span>
+              <span class="price-period">par mois</span>
+            </div>
+          </div>
+
+          <ul class="plan-features">
+            <div class="feature-category">
+              <div class="category-title">Tout du plan Essentiel, plus :</div>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Clients & Facturation</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Clients illimités</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Factures/devis illimités</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Signatures électroniques</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Emails programmés</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Gestion & Rapports</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Dashboard avancé : CA, Achats, TVA</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Gestion des achats et fournisseurs</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Livre de recettes automatique</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Export CSV & Excel</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Sécurité & Support</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Partage de documents sécurisé</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Sauvegarde automatique</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Support prioritaire (24h)</span>
+              </li>
+            </div>
+          </ul>
+
+          <button class="cta-button primary">Commencer</button>
+        </div>
+
+        <!-- Plan Enterprise -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">Entreprise</div>
+            <h2 class="plan-title">Entreprise</h2>
+            <p class="plan-subtitle">Pour les équipes</p>
+            <div class="plan-price">
+              <span class="price">€49.99</span>
+              <span class="price-period">par mois</span>
+            </div>
+          </div>
+
+          <ul class="plan-features">
+            <div class="feature-category">
+              <div class="category-title">Tout du plan PRO, plus :</div>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Équipe & Collaboration</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Multi-utilisateurs et gestion d'équipe</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Gestion des rôles et permissions</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Personnalisation Avancée</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span
+                  >Personnalisation complète (logo, couleurs, identité)</span
+                >
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Rapports personnalisés sur mesure</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Justificatifs d'achat avancés</span>
+              </li>
+            </div>
+
+            <div class="feature-category">
+              <div class="category-title">Intégrations & Support</div>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>API et intégrations</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Formation personnalisée et accompagnement</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Support dédié (chat + email)</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Sécurité renforcée</span>
+              </li>
+              <li class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>SLA 99.9%</span>
+              </li>
+            </div>
+          </ul>
+
+          <button class="cta-button secondary">Contacter l'équipe</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
